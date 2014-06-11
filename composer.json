@@ -1,22 +1,22 @@
 {
-    "name": "jelicanin/silverstripe-HtmlEditorField-content-templates",
+    "name": "jelicanin/silverstripe-htmleditorfield-content-templates",
     "description": "Simple & configurable SilverStripe plugin to show Instagram photos",
     "type": "silverstripe-module",
-    "homepage": "http://github.com/jelicanin/silverstripe-HtmlEditorField-content-templates",
+    "homepage": "http://github.com/jelicanin/silverstripe-htmleditorfield-content-templates",
     "keywords": ["silverstripe", "content", "tinymce", "content template", "HtmlEditorField-content-templates", "module", "cms"],
     "authors": [{
         "name": "Milan jelicanin",
         "email": "milan.jelicanin@fractas.com"
     }],
     "support": {
-        "issues": "http://github.com/jelicanin/silverstripe-HtmlEditorField-content-templates/issues"
+        "issues": "http://github.com/jelicanin/silverstripe-htmleditorfield-content-templates/issues"
     },
     "require": {
         "silverstripe/cms": "~3.0",
         "silverstripe/framework": "~3.0"
     },
     "extra": {
-        "installer-name": "silverstripe-HtmlEditorField-content-templates"
+        "installer-name": "silverstripe-htmleditorfield-content-templates"
     },
-    "target-dir": "HtmlEditorField-content-templates"
+    "target-dir": "silverstripe-htmleditorfield-content-templates"
 }
