@@ -1,5 +1,5 @@
 #SilverStripe HtmlEditorField Content Templates
-*Configurable SilverStripe plugin to extend tinymce content template functionality
+*Configurable SilverStripe module to extend tinymce content template functionality
 
 ##Maintainer Contacts
 *  Milan [dot] Jelicanin [at] Fractas [dot] com
