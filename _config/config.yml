@@ -1,0 +1,13 @@
+---
+Name: HtmlEditorField-content-templates
+Before: 'mysite/*'
+After: 'framework/*','cms/*'
+---
+
+Director:
+  rules:
+     'getcontenttemplates//$Action/$ID' : 'GetContentTemplateData'
+
+LeftAndMain:
+  extensions:
+    - LeftAndMainContentTemplateDecorator
