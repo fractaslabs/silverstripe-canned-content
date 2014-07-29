@@ -1,6 +1,6 @@
 {
     "name": "jelicanin/silverstripe-htmleditorfield-content-templates",
-    "description": "Simple & configurable SilverStripe plugin to show Instagram photos",
+    "description": "SilverStripe plugin for creation and organization predefined content templates for your Html Editor Fields",
     "type": "silverstripe-module",
     "homepage": "http://github.com/jelicanin/silverstripe-htmleditorfield-content-templates",
     "keywords": ["silverstripe", "content", "tinymce", "content template", "HtmlEditorField-content-templates", "module", "cms"],
