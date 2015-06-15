@@ -94,6 +94,9 @@ class HtmlEditorFieldContentTemplate extends DataObject {
 	function AssetsPath() {
 		return $this->AssetsBasePath() . $this->FileName();
 	}
+	function AssetsIndexPath() {
+		return $this->AssetsBasePath() . "index.json";
+	}
 
 	public function canView($member = null) {
 		return true;
@@ -114,28 +117,48 @@ class HtmlEditorFieldContentTemplate extends DataObject {
 
 	function onAfterWrite(){
 		parent::onAfterWrite();
-		$filePath = $this->AssetsPath();
 
-		if (!file_exists($this->AssetsBasePath())) {
-			mkdir($this->AssetsBasePath(), 0777, true);
+		$this->SaveTemplateFile();
+		$this->SaveTemplatesIndex();
+	}
+
+	private function SaveTemplateFile() {
+		$assetsBasePath = $this->AssetsBasePath();
+
+		if (!file_exists($assetsBasePath)) {
+			mkdir($assetsBasePath, 0777, true);
 		}
 
-		file_put_contents($filePath, $this->Content);
+		file_put_contents($this->AssetsPath(), $this->Content);
+	}
+
+	private function SaveTemplatesIndex() {
+		$items = HtmlEditorFieldContentTemplate::get()->where(array('IsActive' => '1'));
+		$output = array();
+
+		if($items->exists()) {
+			foreach ($items as $item) {
+				if($item->exists()) {
+					$output[] = array(
+						'title' => $item->Name,
+						'src' => $item->FilePath(),
+						'description' => isset($item->Description) ? $item->Description : $item->Name
+					);
+				}
+			}
+		}
+
+		file_put_contents($this->AssetsIndexPath(), json_encode($output));
 	}
 
 	public static function FetchDataArray() {
-		$items = HtmlEditorFieldContentTemplate::get()->filter(array('IsActive' => true));
-		$output = array();
-		if(!isset($items)) return false;
-		foreach ($items as $item) {
-			if(!isset($item)) continue;
-			$output[] = array(
-				'title' => $item->Name,
-				'src' => $item->FilePath(),
-				'description' => $item->Description ? $item->Description : $item->Name
-			);
+		$assetsBasePath = singleton('HtmlEditorFieldContentTemplate')->AssetsIndexPath();
+
+		if (file_exists($assetsBasePath)) {
+			return json_decode(file_get_contents($assetsBasePath), true);
 		}
-		return $output;
+
+		return array();
 	}
 
 }

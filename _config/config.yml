@@ -7,7 +7,3 @@ After: 'framework/*','cms/*'
 Director:
   rules:
      'getcontenttemplates//$Action/$ID' : 'GetContentTemplateData'
-
-LeftAndMain:
-  extensions:
-    - LeftAndMainContentTemplateDecorator
