@@ -16,7 +16,6 @@
         "silverstripe/framework": "~3.0"
     },
     "extra": {
-        "installer-name": "silverstripe-htmleditorfield-content-templates"
-    },
-    "target-dir": "silverstripe-htmleditorfield-content-templates"
+        "installer-name": "htmleditorfield-content-templates"
+    }
 }
