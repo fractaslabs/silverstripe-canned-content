@@ -1,6 +1,7 @@
 <?php
 
-class HtmlEditorFieldContentTemplateAdmin extends ModelAdmin {
+class HtmlEditorFieldContentTemplateAdmin extends ModelAdmin
+{
 
     private static $managed_models = array(
         'HtmlEditorFieldContentTemplate'
@@ -13,5 +14,4 @@ class HtmlEditorFieldContentTemplateAdmin extends ModelAdmin {
     // private static $menu_priority = 10;
 
     public $showImportForm = false;
-
 }
