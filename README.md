@@ -1,23 +1,27 @@
-#SilverStripe HtmlEditorField Content Templates
-*Configurable SilverStripe module to extend tinymce content template functionality
-
-##Maintainer Contacts
-*  Milan [dot] Jelicanin [at] Fractas [dot] com
+# SilverStripe HtmlEditorField Content Templates
+Configurable SilverStripe module to extend tinymce content template functionality
 
 
-##Requirements
-* SilverStripe 3
+## Maintainer Contacts
+* Milan [dot] Jelicanin [at] Fractas [dot] com
 
 
-##Installation Instructions
+## Requirements
+* SilverStripe 3+
 
-1. Place this directory in the root of your SilverStripe installation
-2. Visit yoursite.com/dev/build?flush=1 to rebuild the database.
-3. Visit CMS and create new 'HtmlEditorField Content Templates' which you can use on Pages HtmlEditor.
 
-##Known Issues
+## Installation InstructionsInstallation
+ * Install via Composer
+ ```
+ composer require "fractas/silverstripe-htmleditorfield-content-templates"
+ ```
+ * Run yoursite.com/dev/build?flush=1 to rebuild the database
+ * Visit CMS and create new 'HtmlEditorField Content Templates' which you can use on Pages HtmlEditor.
 
+
+## Known Issues
 [GitHub Issue Tracker](https://github.com/jelicanin/silverstripe-HtmlEditorField-content-templates/issues)
 
 
-##Licence
+## Licence
+  * See [Licence](https://github.com/fractaslabs/silverstripe-htmleditorfield-content-templates/blob/master/LICENSE)
