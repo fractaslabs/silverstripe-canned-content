@@ -1,8 +1,14 @@
 <?php
 
+namespace Fractas\HtmlContentTemplate;
+
+use SilverStripe\Control\Controller;
+
+use Fractas\HTMLContentTemplate\HtmlEditorFieldContentTemplate;
+
+
 class GetContentTemplateData extends Controller
 {
-
     private static $url_segment = "getcontenttemplates";
 
     private static $allowed_actions = array(

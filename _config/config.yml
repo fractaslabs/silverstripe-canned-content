@@ -4,6 +4,6 @@ Before: 'mysite/*'
 After: 'framework/*','cms/*'
 ---
 
-Director:
+SilverStripe\Control\Director:
   rules:
-     'getcontenttemplates//$Action/$ID' : 'GetContentTemplateData'
+     'getcontenttemplates//$Action/$ID': 'GetContentTemplateData'

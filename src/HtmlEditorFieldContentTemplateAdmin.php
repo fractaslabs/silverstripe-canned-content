@@ -1,8 +1,11 @@
 <?php
 
+namespace Fractas\HtmlContentTemplate;
+
+use SilverStripe\Admin\ModelAdmin;
+
 class HtmlEditorFieldContentTemplateAdmin extends ModelAdmin
 {
-
     private static $managed_models = array(
         'HtmlEditorFieldContentTemplate'
     );

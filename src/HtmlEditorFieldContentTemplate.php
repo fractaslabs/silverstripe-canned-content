@@ -1,8 +1,19 @@
 <?php
 
+namespace Fractas\HtmlContentTemplate;
+
+use SilverStripe\Control\Controller;
+use SilverStripe\Control\Director;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\CheckboxField;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\TextareaField;
+use SilverStripe\Forms\HtmlEditorField;
+use SilverStripe\ORM\DataObject;
+
+
 class HtmlEditorFieldContentTemplate extends DataObject
 {
-
     private static $db = array(
         "Name" => "Varchar(255)",
         "Description" => "Varchar(255)",
@@ -11,8 +22,7 @@ class HtmlEditorFieldContentTemplate extends DataObject
     );
 
     private static $defaults = array(
-        "IsActive" => true,
-        "AppliesToAllCountries" => true
+        "IsActive" => true
     );
 
     private static $casting = array(
