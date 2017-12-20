@@ -7,9 +7,9 @@ use Fractas\HtmlContentTemplate\HtmlEditorFieldContentTemplate;
 
 class HtmlEditorFieldContentTemplateAdmin extends ModelAdmin
 {
-    private static $managed_models = array(
+    private static $managed_models = [
         HtmlEditorFieldContentTemplate::class
-    );
+    ];
 
     private static $url_segment = 'contenttemplates';
 

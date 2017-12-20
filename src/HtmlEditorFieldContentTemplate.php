@@ -5,13 +5,12 @@ namespace Fractas\HtmlContentTemplate;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
 use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Tab;
 use SilverStripe\Forms\TabSet;
-use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\TextareaField;
-use SilverStripe\Forms\CheckboxField;
-use SilverStripe\Forms\HtmlEditorField;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Security\Permission;
@@ -41,6 +40,7 @@ class HtmlEditorFieldContentTemplate extends DataObject
     private static $summary_fields = array(
         'Name',
         'IsActive.Nice',
+        'Created.Nice',
     );
 
     private static $searchable_fields = array(
@@ -50,6 +50,7 @@ class HtmlEditorFieldContentTemplate extends DataObject
     private static $field_labels = array(
         'Name' => 'Name for Content Template',
         'IsActive.Nice' => 'Is Active',
+        'Created.Nice' => 'Created',
     );
 
     private static $singular_name = 'Content Template';
