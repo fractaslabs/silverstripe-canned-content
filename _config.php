@@ -1,5 +1,8 @@
 <?php
 
+use SilverStripe\Forms\HTMLEditor\HtmlEditorConfig;
+use Fractas\HtmlContentTemplate\HtmlEditorFieldContentTemplate;
+
 HtmlEditorConfig::get('cms')->enablePlugins('template');
 HtmlEditorConfig::get('cms')->setOptions(array('template_templates' => HtmlEditorFieldContentTemplate::FetchDataArray()));
 HtmlEditorConfig::get('cms')->addButtonsToLine(1, 'template');

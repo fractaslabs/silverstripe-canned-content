@@ -4,30 +4,34 @@ namespace Fractas\HtmlContentTemplate;
 
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
+use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Forms\Tab;
+use SilverStripe\Forms\TabSet;
 use SilverStripe\Forms\FieldList;
-use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\TextareaField;
+use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\HtmlEditorField;
+use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\ORM\DataObject;
-
+use SilverStripe\Security\Permission;
 
 class HtmlEditorFieldContentTemplate extends DataObject
 {
     private static $db = array(
-        "Name" => "Varchar(255)",
-        "Description" => "Varchar(255)",
-        "Content" => "HTMLText",
-        "IsActive" => "Boolean"
+        'Name' => 'Varchar(255)',
+        'Description' => 'Varchar(255)',
+        'Content' => 'HTMLText',
+        'IsActive' => 'Boolean',
     );
 
     private static $defaults = array(
-        "IsActive" => true
+        'IsActive' => true,
     );
 
     private static $casting = array(
-        "Title" => "Varchar",
-        "Link" => "Varchar"
+        'Title' => 'Varchar',
+        'Link' => 'Varchar',
     );
 
     private static $indexes = array();
@@ -35,32 +39,32 @@ class HtmlEditorFieldContentTemplate extends DataObject
     private static $default_sort = 'ID DESC';
 
     private static $summary_fields = array(
-        "Name",
-        "IsActive.Nice"
+        'Name',
+        'IsActive.Nice',
     );
 
     private static $searchable_fields = array(
-        "Name" => "PartialMatchFilter"
+        'Name' => 'PartialMatchFilter',
     );
 
     private static $field_labels = array(
-        "Name" => "Name for Content Template",
-        "IsActive.Nice" => "Is Active"
+        'Name' => 'Name for Content Template',
+        'IsActive.Nice' => 'Is Active',
     );
 
-    private static $singular_name = "Content Template";
+    private static $singular_name = 'Content Template';
+
     public function i18n_singular_name()
     {
-        return _t("HtmlEditorFieldContentTemplate.CONTENTTEMPLATE", "Content Template");
+        return _t('HtmlEditorFieldContentTemplate.CONTENTTEMPLATE', 'Content Template');
     }
 
+    private static $plural_name = 'Content Template';
 
-    private static $plural_name = "Content Template";
     public function i18n_plural_name()
     {
-        return _t("HtmlEditorFieldContentTemplate.CONTENTTEMPLATES", "Content Templates");
+        return _t('HtmlEditorFieldContentTemplate.CONTENTTEMPLATES', 'Content Templates');
     }
-
 
     public function populateDefaults()
     {
@@ -75,7 +79,7 @@ class HtmlEditorFieldContentTemplate extends DataObject
             new TextField('Name', 'Name'),
             new CheckboxField('IsActive', 'Is Active'),
             new TextareaField('Description', 'Description'),
-            new HtmlEditorField('Content', 'Content')
+            new HtmlEditorField('Content', 'Content'),
         ));
 
         return $fields;
@@ -85,25 +89,29 @@ class HtmlEditorFieldContentTemplate extends DataObject
     {
         return $this->getTitle();
     }
+
     public function getTitle()
     {
-        $out = "";
+        $out = '';
 
-        return $this->Name . $out;
+        return $this->Name.$out;
     }
 
     public static function LinkBase()
     {
         return self::getLinkBase();
     }
+
     public function Link()
     {
         return $this->getLink();
     }
+
     public function getLinkBase()
     {
-        return Director::baseURL() . Controller::join_links('getcontenttemplates', 'show');
+        return Director::baseURL().Controller::join_links('getcontenttemplates', 'show');
     }
+
     public function getLink()
     {
         return Controller::join_links($this->getLinkBase(), $this->ID);
@@ -113,46 +121,55 @@ class HtmlEditorFieldContentTemplate extends DataObject
     {
         return self::FileBasePath();
     }
+
     public function FileBasePath()
     {
-        return Director::BaseURL() . "assets/tinymce_templates/";
+        return Director::BaseURL().'assets/tinymce_templates/';
     }
+
     public function FilePath()
     {
-        return $this->FileBasePath() . $this->FileName();
+        return $this->FileBasePath().$this->FileName();
     }
+
     public function FileName()
     {
         return "tmpl_$this->ID.html";
     }
+
     public function AssetsBasePath()
     {
-        return ASSETS_PATH . "/tinymce_templates/";
+        return ASSETS_PATH.'/tinymce_templates/';
     }
+
     public function AssetsPath()
     {
-        return $this->AssetsBasePath() . $this->FileName();
+        return $this->AssetsBasePath().$this->FileName();
     }
+
     public function AssetsIndexPath()
     {
-        return $this->AssetsBasePath() . "index.json";
+        return $this->AssetsBasePath().'index.json';
     }
 
     public function canView($member = null)
     {
-        return true;
+        return Permission::check('CMS_ACCESS_CMSMain', 'any', $member);
     }
+
     public function canEdit($member = null)
     {
-        return true;
+        return Permission::check('CMS_ACCESS_CMSMain', 'any', $member);
     }
+
     public function canDelete($member = null)
     {
-        return true;
+        return Permission::check('CMS_ACCESS_CMSMain', 'any', $member);
     }
-    public function canCreate($member = null)
+
+    public function canCreate($member = null, $context = array())
     {
-        return true;
+        return Permission::check('CMS_ACCESS_CMSMain', 'any', $member);
     }
 
     public function onBeforeWrite()
@@ -181,7 +198,7 @@ class HtmlEditorFieldContentTemplate extends DataObject
 
     private function SaveTemplatesIndex()
     {
-        $items = HtmlEditorFieldContentTemplate::get()->where(array('IsActive' => '1'));
+        $items = self::get()->where(array('IsActive' => '1'));
         $output = array();
 
         if ($items->exists()) {
@@ -190,7 +207,7 @@ class HtmlEditorFieldContentTemplate extends DataObject
                     $output[] = array(
                         'title' => $item->Name,
                         'src' => $item->FilePath(),
-                        'description' => isset($item->Description) ? $item->Description : $item->Name
+                        'description' => isset($item->Description) ? $item->Description : $item->Name,
                     );
                 }
             }
@@ -201,7 +218,7 @@ class HtmlEditorFieldContentTemplate extends DataObject
 
     public static function FetchDataArray()
     {
-        $assetsBasePath = singleton('HtmlEditorFieldContentTemplate')->AssetsIndexPath();
+        $assetsBasePath = Injector::inst()->get('Fractas\HtmlContentTemplate\HtmlEditorFieldContentTemplate')->AssetsIndexPath();
 
         if (file_exists($assetsBasePath)) {
             return json_decode(file_get_contents($assetsBasePath), true);

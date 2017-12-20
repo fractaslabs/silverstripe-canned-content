@@ -3,17 +3,15 @@
 namespace Fractas\HtmlContentTemplate;
 
 use SilverStripe\Control\Controller;
-
 use Fractas\HTMLContentTemplate\HtmlEditorFieldContentTemplate;
-
 
 class GetContentTemplateData extends Controller
 {
-    private static $url_segment = "getcontenttemplates";
+    private static $url_segment = 'getcontenttemplates';
 
     private static $allowed_actions = array(
         'json',
-        'show'
+        'show',
     );
 
     public static function GetJson()
