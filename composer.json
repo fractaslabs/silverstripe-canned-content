@@ -1,12 +1,12 @@
 {
-    "name": "fractas/htmleditorfield-content-templates",
+    "name": "fractas/canned-content",
     "description": "SilverStripe module for creation and organization predefined content templates for your Html Editor Fields",
     "type": "silverstripe-vendormodule",
-    "homepage": "https://github.com/fractaslabs/silverstripe-htmleditorfield-content-templates/",
-    "keywords": ["silverstripe", "content", "tinymce", "content template", "HtmlEditorField-content-templates"],
+    "homepage": "https://github.com/fractaslabs/silverstripe-canned-content/",
+    "keywords": ["silverstripe", "content", "tinymce", "content template", "canned content", "HtmlEditorField"],
     "license": "BSD-3-Clause",
     "support": {
-        "issues": "https://github.com/fractaslabs/silverstripe-htmleditorfield-content-templates/issues"
+        "issues": "https://github.com/fractaslabs/silverstripe-canned-content/issues"
     },
     "authors": [{
         "name": "Milan Jelicanin",
@@ -31,7 +31,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Fractas\\HtmlContentTemplate\\": "src/"
+            "Fractas\\CannedContent\\": "src/"
         }
     }
 }

@@ -1,9 +1,9 @@
 ---
-Name: HtmlEditorField-content-templates
+Name: canned-content
 Before: 'mysite/*'
 After: ['framework/*','cms/*']
 ---
 
 SilverStripe\Control\Director:
   rules:
-     'getcontenttemplates//$Action/$ID': 'GetContentTemplateData'
+     'cannedcontent//$Action/$ID': 'Fractas\CannedContent\CannedContentController'
