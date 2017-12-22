@@ -10,11 +10,11 @@ class CannedContentController extends Controller
     private static $url_segment = 'cannedcontent';
 
     private static $allowed_actions = array(
-        'list',
+        'templates',
         'template',
     );
 
-    public function list(HTTPRequest $request)
+    public function templates(HTTPRequest $request)
     {
         $items = CannedContent::get()->where(array('IsActive' => '1'));
         $output = array();
@@ -51,6 +51,6 @@ class CannedContentController extends Controller
 
     public static function FetchTemplates()
     {
-        return self::$url_segment.'/list';
+        return self::$url_segment.'/templates';
     }
 }
