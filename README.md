@@ -35,3 +35,7 @@ SilverStripe module for creation and organization predefined/canned content temp
 ## Licence
 
 - See [Licence](https://github.com/fractaslabs/silverstripe-canned-content/blob/master/LICENSE)
+
+## Attribution
+- Icon "lab.svg" from [IcoMoon - Free](https://icomoon.io/#icons-icomoon)<br>
+  Licence for icon: GPL or CC BY 4.0
