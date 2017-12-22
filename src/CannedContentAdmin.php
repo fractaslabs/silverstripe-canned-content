@@ -15,5 +15,7 @@ class CannedContentAdmin extends ModelAdmin
 
     private static $menu_title = 'Canned Content';
 
+    private static $menu_icon = 'fractas/canned-content:client/dist/images/lab.svg';
+
     public $showImportForm = false;
 }

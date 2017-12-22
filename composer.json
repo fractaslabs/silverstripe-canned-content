@@ -27,7 +27,13 @@
     "extra": {
         "branch-alias": {
             "dev-master": "2.x-dev"
-        }
+        },
+        "expose": [
+            "client/dist"
+        ],
+        "screenshoots": [
+          "docs/en/images/canned-content-model-admin.png"
+        ]
     },
     "autoload": {
         "psr-4": {
