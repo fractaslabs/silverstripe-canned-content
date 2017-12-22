@@ -1,6 +1,11 @@
 # SilverStripe Canned Content Templates
+[![Latest Stable Version](https://poser.pugx.org/fractas/canned-content/v/stable)](https://packagist.org/packages/fractas/canned-content)
+[![Latest Unstable Version](https://poser.pugx.org/fractas/canned-content/v/unstable)](https://packagist.org/packages/fractas/canned-content)
+[![Total Downloads](https://poser.pugx.org/fractas/canned-content/downloads)](https://packagist.org/packages/fractas/canned-content)
+[![License](https://poser.pugx.org/fractas/canned-content/license)](https://packagist.org/packages/fractas/canned-content)
 
-SilverStripe module for creation and organization predefined/canned content templates for your HtmlEditorField
+## Overview
+SilverStripe module for creation and organization predefined/canned content templates for your `HtmlEditorField`
 
 ## Maintainer Contacts
 
@@ -11,7 +16,7 @@ SilverStripe module for creation and organization predefined/canned content temp
 
 - SilverStripe CMS & Framework 4+
 
-## Installation InstructionsInstallation
+## Installation Instructions
 
 - Install via Composer
 
@@ -21,6 +26,7 @@ SilverStripe module for creation and organization predefined/canned content temp
 
 - Run yoursite.com/dev/build?flush=1 to rebuild the database
 - Visit CMS tab 'Canned Content' and start creating templates which you can use on your HtmlEditorField.
+  ![Canned Content model admin](https://github.com/fractaslabs/silverstripe-canned-content/blob/master/docs/en/images/canned-content-model-admin.png)
 
 ## Known Issues
 
