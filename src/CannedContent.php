@@ -11,6 +11,9 @@ use SilverStripe\Forms\TextareaField;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Security\Permission;
+use SilverStripe\Core\Injector\Injector;
+use SilverStripe\ORM\DB;
+use SilverStripe\Dev\YamlFixture;
 
 class CannedContent extends DataObject
 {
@@ -120,4 +123,19 @@ class CannedContent extends DataObject
         return Permission::check('CMS_ACCESS_CMSMain', 'any', $member);
     }
 
+    public function requireDefaultRecords()
+    {
+        parent::requireDefaultRecords();
+
+        $anyrecord = self::get()->first();
+        if (!$anyrecord) {
+            $factory = Injector::inst()->create('SilverStripe\Dev\FixtureFactory');
+            $fixture = YamlFixture::create('vendor/fractas/canned-content/tests/fixtures.yml');
+            $fixture->writeInto($factory);
+
+            DB::alteration_message('Default Canned Content Templates created', 'created');
+        } else {
+            DB::alteration_message('Skipping, Canned Content Templates already created', 'created');
+        }
+    }
 }
