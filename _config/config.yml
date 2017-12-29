@@ -1,7 +1,8 @@
 ---
 Name: canned-content
-Before: 'mysite/*'
-After: ['framework/*','cms/*']
+After:
+  - '#rootroutes'
+  - '#coreroutes'
 ---
 
 SilverStripe\Control\Director:

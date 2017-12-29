@@ -17,6 +17,8 @@ use SilverStripe\Dev\YamlFixture;
 
 class CannedContent extends DataObject
 {
+    private static $table_name = 'CannedContent';
+
     private static $db = array(
         'Name' => 'Varchar(255)',
         'Description' => 'Varchar(255)',
