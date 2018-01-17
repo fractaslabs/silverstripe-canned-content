@@ -25,8 +25,10 @@ SilverStripe module for creation and organization predefined/canned content temp
   ```
 
 - Run yoursite.com/dev/build?flush=1 to rebuild the database
-- Visit CMS tab 'Canned Content' and start creating templates which you can use on your HtmlEditorField.
+- Visit CMS tab _'Canned Content'_ and start creating templates which you can use on your HtmlEditorField.
   ![Canned Content model admin](https://github.com/fractaslabs/silverstripe-canned-content/blob/master/docs/en/images/canned-content-model-admin.png)
+- You can now use even Predefined Canned Content templates with 8 different _Lorem ipsum texts_
+![Canned Content tinyMce 4](https://github.com/fractaslabs/silverstripe-canned-content/blob/master/docs/en/images/predefined-content-templates.png)
 
 ## Known Issues
 
