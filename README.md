@@ -16,6 +16,10 @@ SilverStripe module for creation and organization predefined/canned content temp
 
 - SilverStripe CMS & Framework 4+
 
+## Version info
+The master branch of this module is currently aiming for SilverStripe 4.x compatibility
+- [SilverStripe 3.0+ compatible version](https://github.com/fractaslabs/silverstripe-canned-content/tree/1.0)
+
 ## Installation Instructions
 
 - Install via Composer
