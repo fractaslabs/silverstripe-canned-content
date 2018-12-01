@@ -3,12 +3,11 @@
 namespace Fractas\CannedContent;
 
 use SilverStripe\Admin\ModelAdmin;
-use Fractas\CannedContent\CannedContent;
 
 class CannedContentAdmin extends ModelAdmin
 {
     private static $managed_models = [
-        CannedContent::class
+        CannedContent::class,
     ];
 
     private static $url_segment = 'cannedsoup';

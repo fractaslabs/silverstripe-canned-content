@@ -9,24 +9,24 @@ class CannedContentController extends Controller
 {
     private static $url_segment = 'cannedcontent';
 
-    private static $allowed_actions = array(
+    private static $allowed_actions = [
         'templates',
         'template',
-    );
+    ];
 
     public function templates(HTTPRequest $request)
     {
-        $items = CannedContent::get()->where(array('IsActive' => '1'));
-        $output = array();
+        $items = CannedContent::get()->where(['IsActive' => '1']);
+        $output = [];
 
         if ($items->exists()) {
             foreach ($items as $item) {
                 if ($item->exists()) {
-                    $output[] = array(
+                    $output[] = [
                         'title' => $item->Name,
                         'url' => $item->Link(),
                         'description' => isset($item->Description) ? $item->Description : $item->Name,
-                    );
+                    ];
                 }
             }
         }

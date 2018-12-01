@@ -2,58 +2,58 @@
 
 namespace Fractas\CannedContent;
 
+use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Dev\YamlFixture;
+use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\Tab;
 use SilverStripe\Forms\TabSet;
-use SilverStripe\Forms\CheckboxField;
-use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\TextareaField;
-use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
+use SilverStripe\Forms\TextField;
 use SilverStripe\ORM\DataObject;
-use SilverStripe\Security\Permission;
-use SilverStripe\Core\Injector\Injector;
 use SilverStripe\ORM\DB;
-use SilverStripe\Dev\YamlFixture;
+use SilverStripe\Security\Permission;
 
 class CannedContent extends DataObject
 {
     private static $table_name = 'CannedContent';
 
-    private static $db = array(
+    private static $db = [
         'Name' => 'Varchar(255)',
         'Description' => 'Varchar(255)',
         'Content' => 'HTMLText',
         'IsActive' => 'Boolean',
-    );
+    ];
 
-    private static $defaults = array(
+    private static $defaults = [
         'IsActive' => true,
-    );
+    ];
 
-    private static $casting = array(
+    private static $casting = [
         'Title' => 'Varchar',
         'Link' => 'Varchar',
-    );
+    ];
 
-    private static $indexes = array();
+    private static $indexes = [];
 
     private static $default_sort = 'ID DESC';
 
-    private static $summary_fields = array(
+    private static $summary_fields = [
         'Name',
         'IsActive.Nice',
         'Created.Nice',
-    );
+    ];
 
-    private static $searchable_fields = array(
+    private static $searchable_fields = [
         'Name' => 'PartialMatchFilter',
-    );
+    ];
 
-    private static $field_labels = array(
+    private static $field_labels = [
         'Name' => 'Name for Canned Content Template',
         'IsActive.Nice' => 'Is Active',
         'Created.Nice' => 'Created',
-    );
+    ];
 
     private static $singular_name = 'Canned Content Template';
 
@@ -78,12 +78,12 @@ class CannedContent extends DataObject
     {
         $fields = new FieldList(new TabSet('Root', new Tab('Main')));
 
-        $fields->addFieldsToTab('Root.Main', array(
+        $fields->addFieldsToTab('Root.Main', [
             new TextField('Name', 'Name'),
             new CheckboxField('IsActive', 'Is Active'),
             new TextareaField('Description', 'Description'),
             new HtmlEditorField('Content', 'Content'),
-        ));
+        ]);
 
         return $fields;
     }
@@ -120,7 +120,7 @@ class CannedContent extends DataObject
         return Permission::check('CMS_ACCESS_CMSMain', 'any', $member);
     }
 
-    public function canCreate($member = null, $context = array())
+    public function canCreate($member = null, $context = [])
     {
         return Permission::check('CMS_ACCESS_CMSMain', 'any', $member);
     }
@@ -130,9 +130,9 @@ class CannedContent extends DataObject
         parent::requireDefaultRecords();
 
         $anyrecord = self::get()->first();
-        if (!$anyrecord) {
+        if (! $anyrecord) {
             $factory = Injector::inst()->create('SilverStripe\Dev\FixtureFactory');
-            $fixture = YamlFixture::create('vendor/fractas/canned-content/tests/fixtures.yml');
+            $fixture = YamlFixture::create('vendor/fractas/canned-content/seed/fixtures.yml');
             $fixture->writeInto($factory);
 
             DB::alteration_message('Default Canned Content Templates created', 'created');
